@@ -1,6 +1,7 @@
 import { Button, Card, Image, Link, Text } from "@chakra-ui/react";
 import { useColorMode } from "./ui/color-mode";
 import type { IProduct } from "@/interfaces";
+import { useNavigate } from "react-router-dom";
 
 interface IProps{
     product: IProduct
@@ -8,6 +9,7 @@ interface IProps{
 
 export const ProductCard = ({product}:IProps) => {
   const { colorMode } = useColorMode();
+  const navigate = useNavigate();
 
   return (
     <Card.Root
@@ -50,6 +52,7 @@ export const ProductCard = ({product}:IProps) => {
         <Button
           variant="outline"
           as={Link} 
+          onClick={() => navigate(`/product/${product.documentId}`)}
           border={"none"}
           size={"xl"}
           py={"5"}
