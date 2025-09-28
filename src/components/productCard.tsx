@@ -1,12 +1,16 @@
 import { Button, Card, Image, Link, Text } from "@chakra-ui/react";
 import { useColorMode } from "./ui/color-mode";
+import type { IProduct } from "@/interfaces";
 
-export const ProductCard = () => {
+interface IProps{
+    product: IProduct
+}
+
+export const ProductCard = ({product}:IProps) => {
   const { colorMode } = useColorMode();
 
   return (
     <Card.Root
-      maxW="sm"
       overflow="hidden"
       border={"1px solid #a8b5c8"}
       bg={"none"}
@@ -27,11 +31,10 @@ export const ProductCard = () => {
           textAlign={"center"}
           mb={2}
         >
-          Living room Sofa
+         {product.title}
         </Card.Title>
         <Card.Description fontSize={"sm"} textAlign={"center"}>
-          This sofa is perfect for modern tropical spaces, baroque inspired
-          spaces.
+          {product.description}
         </Card.Description>
         <Text
           textStyle="3xl"
@@ -41,7 +44,7 @@ export const ProductCard = () => {
           letterSpacing="tight"
           mt="2"
         >
-          $450
+          ${product.price}
         </Text>
 
         <Button
