@@ -1,14 +1,25 @@
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import { Provider } from './components/ui/provider.tsx'
-import  { BrowserRouter as Router} from 'react-router-dom'
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
+import { Provider } from "./components/ui/provider.tsx";
+import { BrowserRouter as Router } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-createRoot(document.getElementById('root')!).render(
-  <Router>
-  <Provider>
-      <App />
-    </Provider>
-  </Router>
-    ,
-)
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // default: true
+    },
+  },
+});
+
+createRoot(document.getElementById("root")!).render(
+  <QueryClientProvider client={queryClient}>
+    <Router>
+      <Provider>
+        <App />
+      </Provider>
+    </Router>
+  </QueryClientProvider>
+);
