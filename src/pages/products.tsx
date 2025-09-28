@@ -10,7 +10,7 @@ const  ProductsPage= () => {
     useEffect( () => {
         ( () => {
             axios
-            .get("http://localhost:1337/api/products")
+            .get(`${import.meta.env.VITE_SERVER_URL}/api/products?populate=thumbnail`)
             .then(res => setProdLis(res.data.data))
             .catch(err => console.log(err))
         })()

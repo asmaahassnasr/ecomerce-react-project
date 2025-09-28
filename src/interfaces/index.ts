@@ -3,4 +3,8 @@ export interface IProduct {
     title:string;
     description:string;
     price:number;
+    thumbnail:{
+        name:string,
+        url:string
+    }
 }
