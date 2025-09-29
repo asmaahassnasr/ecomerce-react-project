@@ -80,6 +80,7 @@ const ProductDetails = () => {
               <Card.Description fontSize={"sm"} textAlign={"center"}>
                 {prod?.description}
               </Card.Description>
+              {prod?.category&& 
               <Text
                 textStyle="3xl"
                 fontWeight="medium"
@@ -87,8 +88,10 @@ const ProductDetails = () => {
                 letterSpacing="tight"
                 mt="2"
               >
-                {prod?.category?  prod?.category.title : ""}
+                {prod?.category.title }
               </Text>
+               }
+              
               <Text
                 textStyle="3xl"
                 fontWeight="medium"
